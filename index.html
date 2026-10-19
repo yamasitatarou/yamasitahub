@@ -4,6 +4,8 @@
 	<style>
 		body {
 			margin:0;
+			background-image:url("img/background.jpg");
+			background-size:cover;
 		}
 		#content {
 			width:50%;
@@ -15,11 +17,67 @@
 			text-align:center;
 			color:white;
 		}
+		#iframe {
+			width:75%;
+			height:50%;
+		}
 	</style>
 	</head>
 	<body>
 		<span id=content>
 			<h1>YAMASHITA&emsp;HUB</h1>
+			<br>
+			<h3>サイトエミュレーター</h3>
+			<br>
+			<input type=text value=urlを入力(https://付きで) id=urltxt></input>&emsp;<button value=go id=button>go</button>
+			<br>
+			<button id=big>大きくする</button>&emsp;<button id=small>小さくする</button>
+			<br>
+			<iframe id=iframe src="https://example.com"></iframe>
 		</span>
+		<script>
+			//iframe
+			var iframe = document.getElementById("iframe");
+			//iframesize
+			var iframesize = window.getComputedStyle(iframe);
+			//textbox
+			var urltext = document.getElementById("urltxt");
+			//button
+			var button = document.getElementById("button");
+			//clickbutton
+			button.addEventListener("click",sitego);
+			//sitego
+			function sitego () {
+				//textbox.value
+				var textcontent = urltext.value;
+				//reset
+				iframe.src = "";
+				//go
+				iframe.src = textcontent;
+			}
+			//big
+			var big = document.getElementById("big");
+			//small
+			var small = document.getElementById("small");
+			//width
+			var iwidth = iframesize.width;
+			//height
+			var iheight = iframesize.height;
+			//buttonclick(big)
+			big.addEventListener("click",ibig);
+			//ibig
+			function ibig () {
+			//bigwidth
+			iwidth += 25;
+			console.log(iwdith);
+			//bigheight
+			iheight += 25;
+			console.log(iheight);
+			//bigwidth
+			iframe.style.width = iwidth;
+			//bigheight
+			iframe.style.height = iheight;
+			}
+		</script>
 	</body>
 </html>
